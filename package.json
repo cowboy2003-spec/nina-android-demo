@@ -1,0 +1,12 @@
+{
+  "name": "nina-android-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pré-visualização visual fictícia e isolada da NINA",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}
