@@ -1,0 +1,52 @@
+:root { color-scheme: light dark; --bg: #f6f8f7; --surface: #fff; --text: #182923; --muted: #455d53; --line: #a6b8af; --accent: #14563e; --soft: #e7f3eb; --warning: #fff5d6; }
+@media (prefers-color-scheme: dark) { :root { --bg: #102019; --surface: #182e24; --text: #f0f6f2; --muted: #bdd0c4; --line: #678579; --accent: #b7efd1; --soft: #203f31; --warning: #3b321a; } }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-padding-block: 1rem; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, sans-serif; line-height: 1.6; overflow-wrap: anywhere; }
+.shell { max-width: 64rem; margin-inline: auto; padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left)); }
+h1, h2, h3, p { margin-block: 0 0.75rem; }
+h1 { font-size: 2rem; letter-spacing: 0.05em; }
+h2 { font-size: clamp(1.4rem, 5vw, 1.9rem); line-height: 1.3; }
+h3 { font-size: 1.1rem; }
+.brand, .section-head, .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+.brand { margin-block: 0.5rem 1.5rem; }
+.eyebrow { color: var(--muted); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; }
+.badge, .tag, .count { background: var(--soft); color: var(--accent); border-radius: 0.5rem; padding: 0.25rem 0.6rem; font-size: 0.85rem; font-weight: 700; }
+.badge { vertical-align: middle; letter-spacing: 0; }
+.notice { padding: 1rem; border: 1px solid var(--line); border-inline-start: 4px solid var(--accent); background: var(--warning); border-radius: 0.75rem; }
+nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-block: 1.25rem; }
+a { color: var(--accent); text-underline-offset: 0.2em; }
+nav a { flex: 1 1 7rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem; border: 1px solid var(--line); border-radius: 0.65rem; text-align: center; }
+nav a[aria-current] { background: var(--accent); color: var(--surface); font-weight: 700; }
+button, select, textarea { font: inherit; color: inherit; background: var(--surface); border: 1px solid var(--line); border-radius: 0.6rem; max-width: 100%; }
+button, select, a { min-height: 3rem; }
+button { padding: 0.65rem 1rem; cursor: pointer; white-space: normal; overflow-wrap: anywhere; }
+button:disabled { opacity: 0.65; cursor: not-allowed; }
+button.primary { background: var(--accent); color: var(--surface); border-color: var(--accent); font-weight: 700; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.skip { position: absolute; left: 1rem; top: -10rem; background: var(--surface); padding: 0.75rem; z-index: 1; }
+.skip:focus { top: 1rem; }
+main { min-width: 0; }
+.section-head { margin-block: 1.5rem; }
+.scenario { display: grid; gap: 0.4rem; margin-block: 1rem; }
+label { font-weight: 650; }
+select { width: 100%; padding: 0.65rem; }
+#messages { min-height: 10rem; margin-block: 1.5rem; }
+.message { max-width: 92%; width: fit-content; padding: 1rem; border: 1px solid var(--line); border-radius: 1rem; margin-block: 0.75rem; background: var(--surface); }
+.message.user { margin-inline-start: auto; background: var(--soft); }
+.message p { white-space: pre-wrap; margin-block: 0; }
+.message .byline { font-size: 0.85rem; font-weight: 700; margin-block-end: 0.35rem; color: var(--muted); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 0.8rem; padding: 1rem; margin-block: 1rem; }
+.card a { display: inline-flex; align-items: center; padding-block: 0.6rem; }
+.card h3 { margin-block-start: 0.5rem; }
+.actions { justify-content: flex-start; }
+.composer { display: grid; gap: 0.6rem; margin-block: 1.5rem; }
+textarea { width: 100%; min-width: 0; min-height: 6rem; padding: 0.85rem; resize: vertical; scroll-margin-block: 1rem; }
+#draft-help, footer { color: var(--muted); font-size: 0.9rem; }
+[role="alert"] { background: var(--warning); border-inline-start: 4px solid var(--accent); padding: 0.75rem; }
+footer { border-block-start: 1px solid var(--line); padding-block: 1.5rem; margin-block-start: 1.5rem; }
+@media (min-width: 40rem) { .shell { padding: 2rem; } .scenario { grid-template-columns: auto minmax(0, 1fr); align-items: center; } .message { max-width: 80%; } }
+/* Normal page flow and dynamic viewport resizing keep the composer reachable above Android's keyboard. */
+@media (prefers-reduced-motion: no-preference) { button, nav a { transition: background-color 0.15s; } }
+@media (forced-colors: active) { nav a[aria-current], button.primary { border: 2px solid ButtonText; } }
