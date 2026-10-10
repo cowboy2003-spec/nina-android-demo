@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; media-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="Demonstração visual NINA. Todos os exemplos são fictícios; sem IA, autenticação ou gravação.">
+  <title>NINA · Demonstração visual</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./demo.css">
+  <script type="module" src="./main.js"></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Saltar para o conteúdo</a>
+  <div class="shell">
+    <header class="brand"><div><span class="eyebrow">PRÉ-VISUALIZAÇÃO</span><h1>NINA <span class="badge">DEMO</span></h1></div><button id="reset" type="button">Repor exemplos</button></header>
+    <aside class="notice" aria-label="Limites da demonstração"><strong>Apenas uma demonstração visual.</strong> Conversas, memórias e notificações são fictícias. Não há IA, autenticação, gravação nem reconhecimento de voz. Usa apenas texto inventado; nada é enviado ou guardado pela demonstração.</aside>
+    <nav aria-label="Navegação da demonstração">
+      <a href="#conversa" data-view="conversa" aria-current="page">Conversa</a>
+      <a href="#memorias" data-view="memorias">Memórias fictícias</a>
+      <a href="#avisos" data-view="avisos">Avisos <span class="count" aria-label="2 exemplos">2</span></a>
+    </nav>
+    <main id="conteudo" tabindex="-1">
+      <section id="conversa" data-panel="conversa" aria-labelledby="conversation-title">
+        <div class="section-head"><div><p class="eyebrow">EXPERIMENTAR O ECRÃ</p><h2 id="conversation-title" tabindex="-1">Conversa com a NINA</h2></div><span class="tag">Conteúdo fictício</span></div>
+        <div class="scenario"><label for="scenario">Estado visual de exemplo</label><select id="scenario"><option value="ready">Pronta</option><option value="empty">Conversa vazia</option><option value="loading">A preparar resposta (simulação)</option><option value="error">Erro de exemplo</option><option value="expired">Sessão expirada (fictícia)</option></select></div>
+        <p id="scenario-status" role="status"></p>
+        <p id="scenario-error" role="alert" hidden></p>
+        <button id="resume" type="button" hidden>Voltar à demonstração</button>
+        <div id="messages" role="log" aria-label="Conversa fictícia" aria-live="polite" aria-relevant="additions"></div>
+        <section class="voice card" aria-labelledby="voice-title"><h3 id="voice-title">Controlos visuais de voz</h3><p>Botões de exemplo: o microfone não é utilizado e nenhum som é reproduzido.</p><p id="voice-status" role="status">Simulação de voz parada.</p><div class="actions"><button id="voice-start" type="button">Simular gravação</button><button id="voice-stop" type="button" hidden>Simular paragem</button><button id="voice-result" type="button" hidden>Mostrar resultado fictício</button><button id="voice-cancel" type="button" hidden>Cancelar simulação</button><button id="voice-play" type="button">Simular reprodução</button></div></section>
+        <div class="composer"><label for="draft">Mensagem fictícia</label><textarea id="draft" rows="3" maxlength="500" autocomplete="off" spellcheck="false" aria-describedby="draft-help" placeholder="Ex.: Vamos inventar um passeio na lua?"></textarea><p id="draft-help">Só texto inventado. Enter adiciona um exemplo; Shift + Enter muda de linha. Até 500 caracteres.</p><div class="actions"><button id="send" class="primary" type="button">Adicionar ao exemplo</button><button id="preset" type="button">Usar texto fictício</button></div></div>
+      </section>
+      <section id="memorias" data-panel="memorias" aria-labelledby="memory-title" hidden>
+        <div class="section-head"><div><p class="eyebrow">EXPERIMENTAR A REVISÃO</p><h2 id="memory-title" tabindex="-1">Memórias fictícias</h2></div><span class="tag">Sem persistência</span></div>
+        <p>Estes cartões não vêm da memória da NINA. As escolhas alteram apenas este ecrã; não confirmam factos, consentimento nem decisões do Guardian.</p>
+        <div id="memory-list"></div>
+        <section id="review-preview" class="card" aria-labelledby="review-title" hidden><h3 id="review-title" tabindex="-1">Pré-visualização fictícia da escolha</h3><p id="review-claim"></p><p id="review-choice"></p><div class="actions"><button id="review-confirm" class="primary" type="button">Aplicar só ao exemplo</button><button id="review-cancel" type="button">Cancelar</button></div></section>
+        <p id="review-status" role="status"></p>
+      </section>
+      <section id="avisos" data-panel="avisos" aria-labelledby="notice-title" hidden>
+        <div class="section-head"><div><p class="eyebrow">EXPERIMENTAR OS AVISOS</p><h2 id="notice-title" tabindex="-1">Notificações fictícias</h2></div><span class="tag">Só dentro desta página</span></div>
+        <p>Não são notificações do Android. Não é pedida permissão e não existem alertas em segundo plano.</p>
+        <article class="card"><span class="tag">Exemplo · por ler</span><h3>Uma memória imaginária aguarda revisão</h3><p>Experimenta a apresentação de uma proposta sem guardar uma memória real.</p><a href="#memorias" data-view="memorias">Ver exemplos de memórias</a></article>
+        <article class="card"><span class="tag">Exemplo · por ler</span><h3>Uma conversa imaginária foi interrompida</h3><p>Experimenta o estado visual de sessão expirada. Não existe uma sessão real.</p><button id="notice-expired" type="button">Ver estado fictício de expiração</button></article>
+        <button id="notice-read" type="button">Marcar exemplos como lidos</button><p id="notice-status" role="status"></p>
+      </section>
+    </main>
+    <footer><p>DEMO · Protótipo visual independente da NINA privada.</p><p>Recarregar ou repor elimina as alterações locais. Não introduzas dados pessoais.</p></footer>
+    <noscript><p class="notice">Ativa JavaScript para experimentar os controlos visuais. Nenhum botão envia dados sem JavaScript.</p></noscript>
+  </div>
+</body>
+</html>
